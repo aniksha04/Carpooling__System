@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}My Bookings | CarpoolConnect{% endblock %}
+{% block content %}
+<section class="section-heading"><p class="eyebrow">YOUR PLANS</p><h1>My bookings</h1><p class="muted">Rides you have booked appear here.</p></section>
+{% if bookings %}
+<section class="ride-grid">
+  {% for booking in bookings %}
+  <article class="ride-card">
+    <div class="ride-route"><span>{{ booking.source }}</span><span class="route-arrow">→</span><span>{{ booking.destination }}</span></div>
+    <p class="muted">Driver: <strong>{{ booking.driver }}</strong></p>
+    <p>Status: <span class="status">{{ booking.status }}</span></p>
+    <p class="muted">Booked: {{ booking.booked_at }}</p>
+  </article>
+  {% endfor %}
+</section>
+{% else %}
+<div class="empty-state"><h3>No bookings yet.</h3><a class="button" href="{{ url_for('find_rides') }}">Find a Ride</a></div>
+{% endif %}
+{% endblock %}
