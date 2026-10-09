@@ -6,7 +6,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import mysql.connector
 from mysql.connector import Error
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder=".",static_folder="static")
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "change-this-secret-key-for-local-development")
 
 
